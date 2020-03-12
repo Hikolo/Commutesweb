@@ -1,0 +1,31 @@
+<section class="phx-hero text-5xl">
+  <h1 class="text-red-500">Welcome to DEK Commutes!</h1>
+</section>
+<section>
+  <%= for stop <- @stops do %>
+      <h3><%= gettext "Departures from %{name}", name: stop.name %></h3>
+      <table class="table-fixed">
+	<thead>
+	  <tr>
+	    <th class="w-1/8 px-4 py-2">Line Number</th>
+	    <th class="w-5/8 px-4 py-2">Destination</th>
+	    <th class="w-1/8 px-4 py-2">Departure Time</th>
+	    <th class="w-1/8 px-4 py-2">Type</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= for departure <- stop.departures do %>
+	      <tr>
+		<td class="border px-4 py-2"><%= departure.line_number %></td>
+		<td class="border px-4 py-2"><%= departure.destination %></td>
+		<td class="border px-4 py-2"><%= NaiveDateTime.diff(
+						 departure.expectedDateTime,
+						 NaiveDateTime.local_now) %></td>
+		<td class="border px-4 py-2"><%= departure.transport_mode %></td>
+	      </tr>
+	      <% end %>
+	</tbody>
+      </table>
+      <% end %>
+</section>
+
