@@ -18,9 +18,7 @@
 	      <tr>
 		<td class="border px-4 py-2"><%= departure.line_number %></td>
 		<td class="border px-4 py-2"><%= departure.destination %></td>
-		<td class="border px-4 py-2"><%= NaiveDateTime.diff(
-						 departure.expectedDateTime,
-						 NaiveDateTime.local_now) %></td>
+		<td class="border px-4 py-2"><%= departure.expectedDateTime %></td>
 		<td class="border px-4 py-2"><%= departure.transport_mode %></td>
 	      </tr>
 	      <% end %>
